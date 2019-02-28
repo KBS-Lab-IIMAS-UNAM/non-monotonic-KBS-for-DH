@@ -1,0 +1,85 @@
+[
+class(top,none,[],[],[]),
+
+class(objetos, top, [], [], []),
+
+class(imagenes, objetos, 
+	[[nombre=>sin_nombre,0],[tamanio=>sin_medir,0],[soporte=>papel,0],[tecnica=>sin_definir,0],[texto,0],[texto=>>lengua=>latin,2],[lugar_de_produccion=>mexico=>>lengua=>espaniol,1],[lugar_de_produccion=>mexico,0],[not(color),0],[tipo=>impresa,0],[identificador=>desconocido,0],[sello,0],[not(inscripcion),0]], 
+	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido]], 
+	[]
+	),	
+	
+class(selenografia_alzate,imagenes,
+	[[nombre=>selenografia,0],[tecnica=>calcografia,0],[palabras_clave=>[luna,eclipse,longitud,mexico,riccioli],0],[not(sello),0]],
+	[[grabador=>navarro,0],[autor=>alzate,0]],
+	[
+		[id=>selenografia_alzate_BNM,[[identificador=>'607LAF',0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]],
+		[id=>selenografia_alzate_JCB,[[identificador=>'B770.A478e',0],[url=>'www.google.com',0]],[[coleccionista=>nicolas_leon,0]]],
+		[id=>selenografia_alzate_PALAFOXIANA,[[color,0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]]
+	]
+	),
+	
+class(esfera_armilar_martinez,imagenes,
+	[[nombre=>'sin nombre',0],[tecnica=>xilografia,0],[palabras_clave=>[instrumento,'esfera armilar',globo,zodiaco,ecliptica],0],[not(texto),0],[instrumento,0]],[],
+	[
+		[id=>esfera_armilar_martinez_JCB,[[identificador=>'B06.M385R',0],[url=>'www.google.com',0]],[[contenida_en=>reportorio_martinez_jcb,0]]]
+	]
+	),
+	
+class(selenografia_oculus,imagenes,
+	[[tecnica=>calcografia,0],[palabras_clave=>[luna,mapa],0],[not(sello),0]],
+	[[autor=>rheita,0]],
+	[
+			[id=>selenografia_oculus_BNM,[[url=>'www.google.com',0]],[[coleccionista=>ciguenza,0],[inscripcion_de=>ciguenza]]]
+	]
+	),
+	
+	
+	
+class(repositorios, objetos, [], [], []),
+
+class(personas, objetos, 
+	[[nombre=>anonimo,0],[fecha_nacimiento=>desconocida,0],[fecha_deceso=>desconocida,0],[ocupacion=>ninguna,0],[lugar_de_nacimiento=>desconocido,0],[lugar_de_trabajo=>desconocido,0],[ocupacion=>librero=>>not(ocupacion=>autor),3]],
+	[[ocupacion=>lector=>>leen=>libros,2],[ocupacion=>autor=>>leen=>libros,2],[producen=>libros,0],[usan=>instrumentos,0],[se_relacionan=>personas,0]], 
+	[
+		[ id=>navarro,[[nombre=>'Jose Mariano Navarro',0],[ocupacion=>grabador,0],[lugar_de_trabajo=>mexico,0]],[[duenio=>salon_en_donceles,0],[ilustra=>libros,0],[colabora_con=>[alzate,jauregui],0]] ],
+		[ id=>alzate,[[nombre=>alzate,0],[ocupacion=>autor,0],[lugar_de_trabajo=>mexico,0]],[] ],
+		[ id=>jauregui,[[nombre=>'Jose de Jauregui',0],[ocupacion=>librero,0],[lugar_de_trabajo=>mexico,0],[duenio=>imprenta_calle_san_bernando,0]],[] ],	
+		[ id=>nicolas_leon,[[nombre=>'Nicolas Leon',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
+		[ id=>lafragua,[[nombre=>'Jose Maria Lafragua',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
+		[ id=>mariano_guerrero,[[nombre=>'Jose Mariano Guerrero',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
+		[ id=>doctor_eguiara,[[nombre=>'Juan Jose De Eguiara Y Eguren',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[]],
+		[ id=>ciguenza,[[nombre=>'Carlos De Ciguenza y Gongora',0],[ocupacion=>[lector,autor],0],[lugar_de_trabajo=>mexico,0],[lugar_de_nacimiento=>mexico,0]],[] ],
+		[ id=>rheita,[[nombre=>'Anton Maria Schyrlaeus Rheita',0],[ocupacion=>['monje capuchino',astronomo],0],[lugar_de_trabajo=>[bohemia,italia],0],[lugar_de_nacimiento=>bohemia,0],[fecha_nacimiento=>1597,0],[fecha_deceso=>1660,0]],[] ]
+        ]),
+	
+class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[librero=>desconocido],[anio_publicacion=>desconocido]], [], []),
+	
+class(reportorio_martinez,libros,
+	[[titulo=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0]],
+	[],
+	[
+		[id=>reportorio_martinez_jcb,[],[[sello_de=>mariano_guerrero,0],[inscripcion_de=>doctor_eguiara,0],[contiene_a=>esfera_armilar_martinez_jcb,0],[se_encuentra_en=>jcb,0]]]
+	]
+	),
+	
+class(manuscritos, objetos, [], [], []),
+
+class(lugares, objetos, [], [], [
+		[id=>salon_en_donceles,[[uso=>salon,0],[ubicacion=>'calle donceles',0]],[]],
+		[id=>imprenta_calle_san_bernando,[[uso=>imprenta,0],[ubicacion=>'calle san bernando',0]],[]]	
+	]),
+	
+class(instituciones, objetos, [], [], []),
+
+class(archivos, repositorios, [], [], []),
+
+class(bibliotecas, repositorios, [], [], [
+		[id=>jcb,[],[]],
+		[id=>bnm,[],[]],
+		[id=>condumex,[],[]],
+		[id=>palafoxiana,[],[]],
+		[id=>cervantina,[],[]],
+		[id=>bl,[],[]]	
+	])
+]

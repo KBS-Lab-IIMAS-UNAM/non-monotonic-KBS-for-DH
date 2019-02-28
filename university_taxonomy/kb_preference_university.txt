@@ -1,0 +1,60 @@
+[
+class(top, none, [], [], []),
+
+class(objects, top, [], [], []),
+
+class(concrete, objects, [], [], []),
+
+class(abstract, objects, [], [], []),
+
+class(people, concrete, 
+     [[fun,0],[not(teach),0],[not(sport),0]], 
+     [], 
+     []
+     ),
+
+class(rooms, concrete, 
+     [[size=>huge,0]], 
+     [], 
+     [
+          [id=>200,[],[]],
+          [id=>201,[[size=>small,0]],[]],
+          [id=>202,[],[]],
+          [id=>203,[],[]],
+          [id=>teachers_room,[],[]]
+     ]
+),
+
+class(courses, abstract, 
+     [[easy,0]], 
+     [], 
+     [
+          [id=>prog,[[not(easy),0]],[[at=>[200,201],0]]],
+          [id=>ai,[],[[at=>[201,202],0]]]
+     ]
+),
+
+class(students, people, 
+     [[sport,0],[not(fun),0],[born=>(-)=>>study=>(-),5],[work=>(-)=>>study=>(-),3],[like=>(-)=>>study=>(-),7]], 
+     [], 
+     [
+          [id=>anne,[[work=>us,0],[study=>mexico,0]],[[enrolled=>[ai,prog],0]]]
+     ]
+),
+
+class('faculty members', people, 
+     [[teach,0]], 
+     [], 
+     [
+          [id=>mary,[],[[lectures=>prog,0]]]
+     ]
+),
+
+class('teaching assistants', people, 
+     [[teach,0],[grade=>[quizzes,projects,'problem sets'],0]], 
+     [[found=>teachers_room,0]], 
+     [
+          [id=>brian,[[sport,0]],[[works_for=>mary,0]]]
+     ]
+)
+]
