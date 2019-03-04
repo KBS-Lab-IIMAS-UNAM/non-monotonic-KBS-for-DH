@@ -1198,6 +1198,8 @@ eliminate_null_property([],[]).
 
 eliminate_null_property([_:unknown|T],NewT):-
 	eliminate_null_property(T,NewT),!.
+eliminate_null_property([_:[unknown]|T],NewT):-
+	eliminate_null_property(T,NewT),!.
 
 eliminate_null_property([X:Y|T],[X:Y|NewT]):-
 	eliminate_null_property(T,NewT),!.
@@ -1214,19 +1216,27 @@ relation_extension(Relation,KB,FinalResult):-
 
 filter_objects_with_relation(_,_,[],[]):-!.
 
-filter_objects_with_relation(KB,Relation,[H|T],[H:Value|NewT]):-
+filter_objects_with_relation(KB,Relation,[H|T],[H:[Value|TV]|NewT]):-
+	object_relation_value(H,Relation,KB,[Value|TV]),!,
+	filter_objects_with_relation(KB,Relation,T,NewT).
+filter_objects_with_relation(KB,Relation,[H|T],[H:[Value]|NewT]):-
 	object_relation_value(H,Relation,KB,Value),!,
 	filter_objects_with_relation(KB,Relation,T,NewT).
 
 expanding_classes_into_objects([],[],_).
+expanding_classes_into_objects([X:Y|T],[X:Y2|NewT],KB):-
+	expanding_classes_into_objects_s(X:Y,X:Y2,KB),
+	expanding_classes_into_objects(T,NewT,KB).
 
-expanding_classes_into_objects([X:Y|T],[X:Objects|NewT],KB):-
+
+expanding_classes_into_objects_s(X:[],X:[],_).
+expanding_classes_into_objects_s(X:[Y|TY],X:NewObjects,KB):-
 	there_is_class(Y,KB,yes),
-	objects_of_a_class(Y,KB,Objects),
-	expanding_classes_into_objects(T,NewT,KB).
-
-expanding_classes_into_objects([X:Y|T],[X:[Y]|NewT],KB):-
-	expanding_classes_into_objects(T,NewT,KB).
+	objects_of_a_class(Y,KB,ObjectsC),
+	expanding_classes_into_objects_s(X:TY,X:Objects,KB),
+	append(Objects,ObjectsC,NewObjects).
+expanding_classes_into_objects_s(X:[Y|TY],X:[Y|Objects],KB):-
+	expanding_classes_into_objects_s(X:TY,X:Objects,KB).
 
 
 %Classes of individual
