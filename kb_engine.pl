@@ -521,6 +521,13 @@ change_class_name(Class,NewName,KB,NewKB):-
 	changeMother(Class,NewName,TemporalKB,TemporalKB2),
 	change_relations_with_object(Class,NewName,TemporalKB2,NewKB).
 
+%% Change the class of an object
+change_object_class(Object,NewClass,KB,NewKB):-
+	changeElement(class(Class,Mother,Props,Rels,Objects),class(Class,Mother,Props,Rels,NewObjects),KB,TemporalKB),
+	isElement([id=>Object|Properties],Objects),print(Class),
+	deleteElement([id=>Object|Properties],Objects,NewObjects),
+	changeElement(class(NewClass,Mo,Pr,Re,Objects2),class(NewClass,Mo,Pr,Re,[[id=>Object|Properties]|Objects2]),TemporalKB,NewKB).
+
 
 
 %--------------------------------------------------------------------------------------------------
