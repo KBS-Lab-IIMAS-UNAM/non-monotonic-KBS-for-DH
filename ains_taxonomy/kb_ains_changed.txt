@@ -9,7 +9,7 @@ class(imagenes, objetos,
      [
           [id=>selenografia_alzate_bnm,[[identificador=>'607LAF',0]],[[coleccionista=>lafragua,0]]],
           [id=>esfera_armilar_martinez_jcb,[[identificador=>'B06.M385R',0]],[[contenida_en=>reportorio_martinez_jcb,0]]],
-          [id=>selenografia_oculus_bnm,[],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza]]],
+          [id=>selenografia_oculus_bnm,[],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]],
           [id=>selenografia_alzate_palafoxiana,[[color,0]],[[coleccionista=>lafragua,0]]]
      ]
 ),

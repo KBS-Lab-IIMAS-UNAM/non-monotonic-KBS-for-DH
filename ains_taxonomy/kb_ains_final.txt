@@ -5,7 +5,7 @@ class(objetos, top, [], [], []),
 
 class(imagenes, objetos, 
 	[[nombre=>sin_nombre,0],[tamanio=>sin_medir,0],[soporte=>papel,0],[tecnica=>sin_definir,0],[texto,0],[texto=>>lengua=>latin,2],[lugar_de_produccion=>mexico=>>lengua=>espaniol,1],[lugar_de_produccion=>mexico,0],[not(color),0],[tipo=>impresa,0],[identificador=>desconocido,0],[sello,0],[not(inscripcion),0]], 
-	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido]], 
+	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido,0]], 
 	[]
 	),	
 	
@@ -30,7 +30,7 @@ class(selenografia_oculus,imagenes,
 	[[tecnica=>calcografia,0],[palabras_clave=>[luna,mapa],0],[not(sello),0]],
 	[[autor=>rheita,0]],
 	[
-			[id=>selenografia_oculus_BNM,[[url=>'www.google.com',0]],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza]]]
+			[id=>selenografia_oculus_BNM,[[url=>'www.google.com',0]],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]]
 	]
 	),
 	
@@ -53,7 +53,7 @@ class(personas, objetos,
 		[ id=>rheita,[[nombre=>'Anton Maria Schyrlaeus Rheita',0],[ocupacion=>['monje capuchino',astronomo],0],[lugar_de_trabajo=>[bohemia,italia],0],[lugar_de_nacimiento=>bohemia,0],[fecha_nacimiento=>1597,0],[fecha_deceso=>1660,0]],[] ]
         ]),
 	
-class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[librero=>desconocido],[anio_publicacion=>desconocido]], [], []),
+class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[librero=>desconocido,0],[anio_publicacion=>desconocido,0]], [], []),
 	
 class(reportorio_martinez,libros,
 	[[titulo=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0]],
