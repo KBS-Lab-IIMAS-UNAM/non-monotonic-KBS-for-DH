@@ -53,16 +53,33 @@ book_lib([_|More],Library,KB,Books):-
 
 
 %%%%%%%%%%%%%%%%%
-%% Finds the content of an archive
-%% e.g., open_kb('kb_ains_final.txt',KB),content_of(reportorio_martinez_jcb,KB,Content).
-content_of(Archive,KB,Content):-
+%% Returns the content of an archive
+%% e.g., open_kb('kb_ains_final.txt',KB),contents_of(reportorio_martinez_jcb,KB,Content).
+contents_of(Archive,KB,Content):-
         relation_extension(contiene_a,KB,Relations), 
-        check_content(Relations,Archive,Content).
+        check_contents(Relations,Archive,Content).
 
-check_content([],_,[]).
+check_contents([],_,unknown).
 
-check_content([Archive:Content|_],Archive,Content):-!.
+check_contents([Archive:Content|_],Archive,Content):-!.
 
-check_content([_|More],Archive,Content):-
+check_contents([_|More],Archive,Content):-
 	check_content(More,Archive,Content).
 
+
+
+%%%%%%%%%%%%%%%%%
+%% Gets the archive where an image is contained
+%% e.g., open_kb('kb_ains_final.txt',KB),contained_in(selenografia_oculus_bnm,KB,Archive).
+%% e.g., open_kb('kb_ains_final.txt',KB),contained_in(selenografia_alzate_jcb,KB,Archive).
+contained_in(Image,KB,Archive):-
+        relation_extension(contiene_a,KB,Relations), 
+        check_archive(Relations,Image,Archive).
+
+check_archive([],_,unknown).
+
+check_archive([Archive:Lst|_],Image,Archive):-
+        isElement(Image,Lst),!.
+
+check_archive([_|More],Image,Archive):-
+        check_archive(More,Image,Archive).
