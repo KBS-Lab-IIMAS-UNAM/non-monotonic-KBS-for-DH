@@ -4,37 +4,35 @@ class(top,none,[],[],[]),
 class(objetos, top, [], [], []),
 
 class(imagenes, objetos, 
-	[[nombre=>sin_nombre,0],[tamanio=>sin_medir,0],[soporte=>papel,0],[tecnica=>sin_definir,0],[texto,0],[texto=>>lengua=>latin,2],[lugar_de_produccion=>mexico=>>lengua=>espaniol,1],[lugar_de_produccion=>mexico,0],[not(color),0],[tipo=>impresa,0],[identificador=>desconocido,0],[sello,0],[not(inscripcion),0]], 
-	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido,0]], 
+	[[nombre=>sin_nombre,0],[palabras_clave=>[astronomia],0],[tamanio=>sin_medir,0],[soporte=>papel,0],[tecnica=>sin_definir,0],[texto,0],[texto=>>lengua=>latin,2],[lugar_de_produccion=>mexico=>>lengua=>espaniol,1],[lugar_de_produccion=>mexico,0],[not(color),0],[tipo=>impresa,0],[identificador=>desconocido,0],[sello,0],[not(inscripcion),0],[fechado,0]], 
+	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido,0]],
 	[]
 	),	
 	
 class(selenografia_alzate,imagenes,
-	[[nombre=>selenografia,0],[tecnica=>calcografia,0],[palabras_clave=>[luna,eclipse,longitud,mexico,riccioli],0],[not(sello),0]],
+	[[nombre=>selenografia,0],[tecnica=>calcografia,0],[palabras_clave=>[luna,eclipse,longitud,mexico,riccioli],0],[not(sello),0],[lengua=>espanol,0]],
 	[[grabador=>navarro,0],[autor=>alzate,0]],
 	[
-		[id=>selenografia_alzate_BNM,[[identificador=>'607LAF',0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]],
-		[id=>selenografia_alzate_JCB,[[identificador=>'B770.A478e',0],[url=>'www.google.com',0]],[[coleccionista=>nicolas_leon,0]]],
-		[id=>selenografia_alzate_PALAFOXIANA,[[color,0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]]
+		[id=>selenografia_alzate_bnm,[[identificador=>'607LAF',0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]],
+		[id=>selenografia_alzate_jcb,[[identificador=>'B770.A478e',0],[url=>'www.google.com',0]],[[coleccionista=>nicolas_leon,0]]],
+		[id=>selenografia_alzate_palafoxiana,[[color,0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]]
 	]
 	),
 	
 class(esfera_armilar_martinez,imagenes,
-	[[nombre=>'sin nombre',0],[tecnica=>xilografia,0],[palabras_clave=>[instrumento,'esfera armilar',globo,zodiaco,ecliptica],0],[not(texto),0],[instrumento,0]],[],
+	[[nombre=>'sin nombre',0],[tecnica=>xilografia,0],[palabras_clave=>[instrumento,'esfera armilar',globo,zodiaco,ecliptica],0],[not(texto),0],[instrumento,0],[not(fechado),0]],[],
 	[
-		[id=>esfera_armilar_martinez_JCB,[[identificador=>'B06.M385R',0],[url=>'www.google.com',0]],[[contenida_en=>reportorio_martinez_jcb,0]]]
+		[id=>esfera_armilar_martinez_jcb,[[identificador=>'B06.M385R',0],[url=>'www.google.com',0]],[]]
 	]
 	),
 	
 class(selenografia_oculus,imagenes,
-	[[tecnica=>calcografia,0],[palabras_clave=>[luna,mapa],0],[not(sello),0]],
+	[[tecnica=>calcografia,0],[palabras_clave=>[luna,mapa],0],[not(sello),0],[lugar_de_produccion=>amberes,0]],
 	[[autor=>rheita,0]],
 	[
-			[id=>selenografia_oculus_BNM,[[url=>'www.google.com',0]],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]]
+			[id=>selenografia_oculus_bnm,[[url=>'www.google.com',0]],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]]
 	]
 	),
-	
-	
 	
 class(repositorios, objetos, [], [], []),
 
@@ -50,18 +48,37 @@ class(personas, objetos,
 		[ id=>mariano_guerrero,[[nombre=>'Jose Mariano Guerrero',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
 		[ id=>doctor_eguiara,[[nombre=>'Juan Jose De Eguiara Y Eguren',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[]],
 		[ id=>siguenza,[[nombre=>'Carlos De Siguenza y Gongora',0],[ocupacion=>[lector,autor],0],[lugar_de_trabajo=>mexico,0],[lugar_de_nacimiento=>mexico,0]],[] ],
-		[ id=>rheita,[[nombre=>'Anton Maria Schyrlaeus Rheita',0],[ocupacion=>['monje capuchino',astronomo],0],[lugar_de_trabajo=>[bohemia,italia],0],[lugar_de_nacimiento=>bohemia,0],[fecha_nacimiento=>1597,0],[fecha_deceso=>1660,0]],[] ]
+		[ id=>rheita,[[nombre=>'Anton Maria Schyrlaeus Rheita',0],[ocupacion=>['monje capuchino',astronomo],0],[lugar_de_trabajo=>[bohemia,italia],0],[lugar_de_nacimiento=>bohemia,0],[fecha_nacimiento=>1597,0],[fecha_deceso=>1660,0]],[] ],
+                [ id=>enrico_martinez,[[nombre=>'Enrico Martinez',0]],[] ],
+                [ id=>hieronimus_verdussi,[[nombre=>'Hieronimus Verdussi',0]], []]
         ]),
 	
-class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[librero=>desconocido,0],[anio_publicacion=>desconocido,0]], [], []),
+class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[anio_publicacion=>desconocido,0], [lugar_de_publicacion=>mexico,0]], [[autor=>desconocido,0],[librero=>desconocido,0]], []),
 	
 class(reportorio_martinez,libros,
-	[[titulo=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0]],
-	[],
+	[[titulo=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0],[anio_publicacion=>1606,0]],
+	[[autor=>enrico_martinez,0],[librero=>enrico_martinez,0]],
 	[
 		[id=>reportorio_martinez_jcb,[],[[sello_de=>mariano_guerrero,0],[inscripcion_de=>doctor_eguiara,0],[contiene_a=>esfera_armilar_martinez_jcb,0],[se_encuentra_en=>jcb,0]]]
 	]
 	),
+
+class(eclypse_de_luna,libros,
+	[[titulo=>'Eclypse de luna',0],[anio_publicacion=>1770,0]],
+	[[autor=>alzate,0],[librero=>jauregui,0]],
+	[
+		[id=>eclypse_de_luna_jcb,[],[[sello_de=>nicolas_leon,0],[contiene_a=>selenografia_alzate_jcb,0],[se_encuentra_en=>jcb,0]]],
+         	[id=>eclypse_de_luna_palafoxiana,[],[[contiene_a=>selenografia_alzate_palafoxiana,0],[se_encuentra_en=>palafoxiana,0]]],
+      	        [id=>eclypse_de_luna_bnm,[],[[contiene_a=>selenografia_alzate_bnm,0],[se_encuentra_en=>bnm,0]]]
+	]
+	),
+	
+class(oculus_enoch,libros,
+	[[titulo=>'Oculus Enoch et eliae sive radius sidereomysticus pars prima',0],[lugar_de_publicacion=>[antverpiae,amberes],0],[anio_publicacion=>1645,0]],
+	[[autor=>rheita,0],[librero=>hieronimus_verdussi,0]],
+	[
+		[id=>oculus_enoch_bnm,[[inscripcion=>'hice traer de flandes este libro y puesto en mex me tuvo de costo nueve p de Carlos de Siguenza y Gongora 1678',0]],[[se_encuentra_en=>bnm,0],[inscripcion_de=>siguenza,0],[contiene_a=>selenografia_oculus_bnm,0]]]
+	]),
 	
 class(manuscritos, objetos, [], [], []),
 
