@@ -56,14 +56,12 @@ book_lib([_|More],Library,KB,Books):-
 %% Finds the content of an archive
 %% e.g., open_kb('kb_ains_final.txt',KB),content_of(reportorio_martinez_jcb,KB,Content).
 content_of(Archive,KB,Content):-
-        relation_extension(contenida_en,KB,Relations), 
+        relation_extension(contiene_a,KB,Relations), 
         check_content(Relations,Archive,Content).
 
 check_content([],_,[]).
 
-check_content([Val:Lst|More],Archive,[Val|Content]):-
-        isElement(Archive,Lst),
-	check_content(More,Archive,Content),!.
+check_content([Archive:Content|_],Archive,Content):-!.
 
 check_content([_|More],Archive,Content):-
 	check_content(More,Archive,Content).
