@@ -1,30 +1,30 @@
 [
 class(top,none,[],[],[]),
 
-class(objetos, top, [], [], []),
+class(objetcs, top, [], [], []),
 
-class(imagenes, objetos, [], [], 
+class(images, objects, [], [], 
 	[
-		[id=>selenografia_alzate_bnm,[[identificador=>'607LAE',0]],[[coleccionista=>lafragua,0]]],
-		[id=>esfera_armilar_martinez_jcb,[[identificador=>'B06.M385R',0]],[[contenida_en=>reportorio_martinez_jcb,0]]],
-		[id=>selenografia_oculus_bnm,[],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]]
+		[id=>selenografia_alzate_bnm,[[identifier=>'607LAE',0]],[[collector=>lafragua,0]]],
+		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0]],[]],
+		[id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
         ]),	
 	
-class(personas, objetos, [], [], 
+class(people, objects, [], [], 
 	[
-		[ id=>alzate,[[nombre=>alzate,0],[ocupacion=>autor,0]],[] ],
-		[ id=>lafragua,[[nombre=>'Jose Maria Lafragua',0],[ocupacion=>coleccionista,0]],[] ],
-		[ id=>siguenza,[[nombre=>'Carlos De Siguenza y Gongora',0],[ocupacion=>[lector,autor],0]],[] ]
+		[ id=>alzate,[[name=>alzate,0],[occupation=>author,0]],[] ],
+		[ id=>lafragua,[[name=>'Jose Maria Lafragua',0],[occupation=>collector,0]],[] ],
+		[ id=>siguenza,[[name=>'Carlos De Siguenza y Gongora',0],[occupation=>[reader,author],0]],[] ]
         ]),
 	
-class(libros, objetos, [], [], 
+class(books, objects, [], [], 
         [
-		[id=>reportorio_martinez_jcb,[],[[contiene_a=>esfera_armilar_martinez_jcb,0],[se_encuentra_en=>jcb,0]]]
+		[id=>reportorio_martinez_jcb,[],[[includes=>esfera_armilar_martinez_jcb,0],[held_in=>jcb,0]]]
         ]),
 
-class(repositorios, objetos, [], [], []),
+class(repositories, objects, [], [], []),
 	
-class(bibliotecas, repositorios, [], [], [
+class(libraries, repositories, [], [], [
 		[id=>jcb,[],[]],
 		[id=>bnm,[],[]]
 	])

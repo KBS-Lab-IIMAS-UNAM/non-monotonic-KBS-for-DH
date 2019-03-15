@@ -4,7 +4,7 @@
 
 %%%%%%%%%%%%%%%%%
 %% Gets all images with a keyword
-%% e.g., open_kb('kb_ains_final.txt',KB), extension_keyword(luna,KB,ImgKW).
+%% e.g., open_kb('kb_ains_final.txt',KB), extension_keyword(moon,KB,ImgKW).
 extension_keyword(KW,KB,ImgKW):-
 	  sons_of_class(images,KB,List_Imgs),
 	  check_keyword_img(List_Imgs,KW,KB,ImgKW).
