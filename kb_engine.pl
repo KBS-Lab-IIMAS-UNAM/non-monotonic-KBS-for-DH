@@ -433,6 +433,7 @@ change_value_object_property(Object,Property,NewValue,KB,NewKB):-
 
 %% Change the value of an object RELATION
 change_value_object_relation(Object,Relation,NewObjectRelated,KB,NewKB):-
+	there_is_object_list(NewObjectRelated,KB,yes),
 	rm_object_relation(Object,Relation,KB,TemporalKB),
 	add_object_relation(Object,Relation,NewObjectRelated,TemporalKB,NewKB).
 
@@ -447,6 +448,7 @@ change_value_class_property(Class,Property,NewValue,KB,NewKB):-
 
 %% Change the value of a class RELATION
 change_value_class_relation(Class,Relation,NewClassRelated,KB,NewKB):-
+	there_is_class_list(NewClassRelated,KB,yes),
 	rm_class_relation(Class,Relation,KB,TemporalKB),
 	add_class_relation(Class,Relation,NewClassRelated,TemporalKB,NewKB).
 
@@ -546,6 +548,16 @@ there_is_class(Class,[class(Class,_,_,_,_)|_],yes):-!.
 there_is_class(Class,[_|T],Answer):-
 	there_is_class(Class,T,Answer).
 
+there_is_class_list(Class,KB,Ans):-
+	there_is_class(Class,KB,Ans),!.
+there_is_class_list([],_,yes):-!.
+there_is_class_list([H|_],KB,unknown):-
+	there_is_class(H,KB,unknown).
+there_is_class_list([H|_],KB,no):-
+	there_is_class(H,KB,no).
+there_is_class_list([H|T],KB,Ans):-
+	there_is_class(H,KB,yes),
+	there_is_class_list(T,KB,Ans).
 
 
 %Verify if an object exists
@@ -560,6 +572,18 @@ there_is_object(Object,[class(_,_,_,_,O)|_],yes):-
 
 there_is_object(Object,[_|T],Answer):-
 	there_is_object(Object,T,Answer),!.
+
+there_is_object_list(Object,KB,Ans):-
+	there_is_object(Object,KB,Ans),!.
+there_is_object_list([],_,yes):-!.
+there_is_object_list([H|_],KB,unknown):-
+	there_is_object(H,KB,unknown).
+there_is_object_list([H|_],KB,no):-
+	there_is_object(H,KB,no).
+there_is_object_list([H|T],KB,Ans):-
+	there_is_object(H,KB,yes),
+	there_is_object_list(T,KB,Ans).
+
 
 
 
@@ -657,6 +681,20 @@ delete_repeated_properties([H|T],[H|NewT]):-
 	deleteElement(H,T,L1),
 	deleteElement(not(H),L1,L2),
 	delete_repeated_properties(L2,NewT),!.
+
+delete_repeated_abductions([],[]).
+
+delete_repeated_abductions([El:Pref|T],[El:Pref|NewT]):-
+	deleteAbuction(El,T,L2),
+	delete_repeated_abductions(L2,NewT),!.
+
+deleteAbuction(_,[],[]):-!.
+deleteAbuction(Abd,[Abd:_|T],NewL):-
+	deleteAbuction(Abd,T,NewL).
+deleteAbuction(Abd,[H:HV|T],[H:HV|NewL]):-
+	deleteAbuction(Abd,T,NewL).
+
+
 
 %Unir Lista
 unir_lista([],L,L).
@@ -832,6 +870,45 @@ prefer_handlerL([(Pref=>Val)|T],LPref,Prop,Val):-
 	delete_repeated_properties(PropA,NPropA),
 	parte_de((Pref=>Val),NPropA),
 	prefer_handlerL(T,LPref,Prop,Val).
+
+
+%%Abductive Handler
+abductive(Prop,Adb):-
+	%print(Prop),
+	prefer_extract(Prop,PropE,Pref),
+	delete_repeated_properties(PropE,PropEE),
+	preordenar(Pref,[],PrefO),print(PrefO),
+	abductive_handler(PrefO,PropEE,Adb).
+
+abductive_handler([],_,[]).
+%Case 0 conclusion of type prop=>x
+abductive_handler([[(Pref=>'-')=>>(El=>'-'),_]|T],Prop,NewAbd):-
+	parte_de((El=>Val),Prop),
+	abductive_handler(T,Prop,Adb),
+	unir_lista([(El=>Val):(Pref=>Val)],Adb,NewAbd).
+%Case0.2
+abductive_handler([[(Pref=>'-')=>>(El=>ValE),_]|T],Prop,NewAbd):-
+	parte_de((El=>ValE),Prop),
+	abductive_handler(T,Prop,Adb),
+	unir_lista([(El=>ValE):(Pref=>ValE)],Adb,NewAbd).
+%Case 1 conclusion of type prop=>x
+abductive_handler([[Pref=>>(El=>'-'),_]|T],Prop,NewAbd):-
+	parte_de((El=>Val),Prop),
+	abductive_handler(T,Prop,Adb),
+	unir_lista([(El=>Val):Pref],Adb,NewAbd).
+%Case 2 conclusion of type prop=>val
+abductive_handler([[Pref=>>(El=>ValE),_]|T],Prop,NewAdb):-
+	parte_de((El=>ValE),Prop),
+	abductive_handler(T,Prop,Adb),
+	unir_lista([(El=>ValE):Pref],Adb,NewAdb).
+%case 3 conclusion of type prop
+abductive_handler([[Pref=>>El,_]|T],Prop,NewAdb):-
+	parte_de(El,Prop),
+	abductive_handler(T,Prop,Adb),
+	unir_lista([El:Pref],Adb,NewAdb).
+%caso default, si no la encuentra.
+abductive_handler([_|T],Prop,Adb):-
+	abductive_handler(T,Prop,Adb).
 
 
 
@@ -1083,6 +1160,18 @@ relations_only_in_the_object(Object,[_|T],Relations):-
 	relations_only_in_the_object(Object,T,Relations).
 
 
+%%List of all abduvtive reasoning answers
+
+object_abductive(Object,KB,AllAdbuctive):-
+	there_is_object(Object,KB,yes),
+	properties_only_in_the_object(Object,KB,ObjectProperties),
+	class_of_an_object(Object,KB,Class),
+	list_of_ancestors(Class,KB,Ancestors),
+	concat_ancestors_properties([Class|Ancestors],KB,ClassProperties),
+	append(ObjectProperties,['?'],ObjectProperties2),
+	append(ObjectProperties2,ClassProperties,Temp),
+	abductive(Temp,AllAdbuctive).
+	%delete_repeated_abductions(TempR,AllAdbuctive).
 
 %Return the value of an object relation
 
