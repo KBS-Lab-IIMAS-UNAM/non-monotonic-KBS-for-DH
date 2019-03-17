@@ -1,0 +1,81 @@
+[
+class(top, none, [], [], []),
+
+class(objetcs, top, [], [], []),
+
+class(images, objects, 
+     [[text,0],[not(color),0],[text=>>language=>latin,2],[engraver=>'-'=>>technique=>engraving,3],[epoch=>'1700-1800'=>>technique=>engraving,4]], 
+     [], 
+     []
+),
+
+class(selenografia_alzate, images, 
+     [[name=>selenografia,0],[technique=>engraving,0]], 
+     [[author=>alzate,0]], 
+     [
+          [id=>selenografia_alzate_bnm,[[identifier=>'607LAF',0]],[[collector=>lafragua,0]]],
+          [id=>selenografia_alzate_palafoxiana,[[illuminated,0]],[[collector=>lafragua,0]]]
+     ]
+),
+
+class(esfera_armilar_martinez, images, 
+     [[name=>unknown,0],[technique=>woodcut,0],[not(text),0],[epoch=>'1550-1700',0]], 
+     [], 
+     [
+          [id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0]],[]]
+     ]
+),
+
+class(selenografia_oculus, images, 
+     [[epoch=>'1550-1700',0],[technique=>engraving,0]], 
+     [], 
+     [
+          [id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
+     ]
+),
+
+class(people, objects, 
+     [[name=>unnamed,0],[occupation=>unknown,0],[work_place=>unknown,0]], 
+     [], 
+     [
+          [id=>alzate,[[name=>alzate,0],[occupation=>author,0]],[]],
+          [id=>lafragua,[[name=>'Jose Maria Lafragua',0],[occupation=>collector,0]],[]],
+          [id=>siguenza,[[name=>'Carlos De Siguenza y Gongora',0],[occupation=>[reader,author],0]],[]]
+     ]
+),
+
+class(books, objects, 
+     [], 
+     [], 
+     []
+),
+
+class(reportorio_martinez, books, 
+     [], 
+     [], 
+     [
+          [id=>reportorio_martinez_jcb,[],[[includes=>esfera_armilar_martinez_jcb,0],[held_in=>jcb,0]]]
+     ]
+),
+
+class(repositories, objects, [], [], []),
+
+class(repositories, objects, [], [], []),
+
+class(libraries, repositories, 
+     [], 
+     [], 
+     [
+          [id=>jcb,[],[]],
+          [id=>bnm,[],[]]
+     ]
+),
+
+class(places, objects, 
+     [], 
+     [], 
+     [
+          [id=>salon_en_donceles,[[used_as=>salon,0],[location=>'calle donceles',0]],[]]
+     ]
+)
+]
