@@ -40,7 +40,7 @@ class(people, objects,
 	[[name=>not_given,0],[date_of_birth=>unknown,0],[deceased=>unknown,0],[occupation=>unknown,0],[born_in=>unknown,0],[worked_in=>unknown,0],[occupation=>publisher=>>not(occupation=>author),3]],
 	[[occupation=>reader=>>read=>books,2],[occupation=>author=>>read=>books,2],[produce=>books,0],[use=>instruments,0],[relation_with=>people,0]], 
 	[
-		[ id=>navarro,[[name=>'Jose Mariano Navarro',0],[occupation=>engraver,0],[worked_in=>mexico,0]],[[entertained=>salon_en_donceles,0],[engraves=>books,0],[collaborates_with=>[alzate,jauregui],0]] ],
+		[ id=>navarro,[[name=>'Jose Mariano Navarro',0],[occupation=>engraver,0],[worked_in=>mexico,0]],[[entertained=>salon_in_donceles,0],[engraves=>books,0],[collaborates_with=>[alzate,jauregui],0]] ],
 		[ id=>alzate,[[name=>alzate,0],[occupation=>author,0],[worked_in=>mexico,0]],[] ],
 		[ id=>jauregui,[[name=>'Jose de Jauregui',0],[occupation=>publisher,0],[worked_in=>mexico,0],[owned=>printing_house_calle_san_bernando,0]],[] ],	
 		[ id=>nicolas_leon,[[name=>'Nicolas Leon',0],[occupation=>collector,0],[worked_in=>mexico,0]],[] ],
@@ -84,7 +84,7 @@ class(manuscrits, objects, [], [], []),
 
 class(places, objects, [], [], [
 		[id=>salon_in_donceles,[[used_as=>salon,0],[location=>'calle donceles',0]],[]],
-		[id=>printing_house_calle_san_bernando,[[functions_as=>press,0],[location=>'calle san bernando',0]],[]]	
+		[id=>printing_house_calle_san_bernando,[[used_as=>press,0],[location=>'calle san bernando',0]],[]]	
 	]),
 	
 class(institutions, objects, [], [], []),
@@ -92,11 +92,11 @@ class(institutions, objects, [], [], []),
 class(archives, repositories, [], [], []),
 
 class(libraries, repositories, [], [], [
-		[id=>jcb,[],[]],
-		[id=>bnm,[],[]],
-		[id=>condumex,[],[]],
-		[id=>palafoxiana,[],[]],
-		[id=>cervantina,[],[]],
-		[id=>bl,[],[]]	
+		[id=>jcb,[[name=>'John Carter Brown Library',0]],[]],
+		[id=>bnm,[[name=>'Biblioteca Nacional de Mexico',0]],[]],
+		[id=>condumex,[[name=>'Centro de Estudios de Historia de Mexico Carso',0]],[]],
+		[id=>palafoxiana,[[name=>'Biblioteca Palafoxiana',0]],[]],
+		[id=>cervantina,[[name=>'Biblioteca Cervantina ITESM',0]],[]],
+		[id=>bl,[[name=>'British Library',0]],[]]	
 	])
 ]
