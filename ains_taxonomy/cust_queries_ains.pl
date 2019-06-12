@@ -64,7 +64,7 @@ check_contents([],_,unknown).
 check_contents([Book:Content|_],Book,Content):-!.
 
 check_contents([_|More],Book,Content):-
-        check_content(More,Book,Content).
+        check_contents(More,Book,Content).
 
 
 
