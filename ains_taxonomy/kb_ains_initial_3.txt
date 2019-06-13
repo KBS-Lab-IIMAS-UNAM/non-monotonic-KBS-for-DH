@@ -7,10 +7,8 @@ class(images, objects,
      [], 
      [], 
      [
-          [id=>selenografia_alzate_bnm,[[identifier=>'607LAF',0]],[[collector=>lafragua,0]]],
           [id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0]],[]],
-          [id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]],
-          [id=>selenografia_alzate_palafoxiana,[[illuminated,0]],[[collector=>lafragua,0]]]
+          [id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
      ]
 ),
 
@@ -48,6 +46,15 @@ class(places, objects,
      [], 
      [
           [id=>salon_en_donceles,[[used_as=>salon,0],[location=>'calle donceles',0]],[]]
+     ]
+),
+
+class(selenografia_alzate, images, 
+     [], 
+     [], 
+     [
+          [id=>selenografia_alzate_jcb,[[identifier=>'B770.A478e',0]],[[collector=>nicolas_leon,0]]],
+          [id=>selenografia_alzate_palafoxiana,[[illuminated,0]],[[collector=>lafragua,0]]]
      ]
 )
 ]
