@@ -15,14 +15,14 @@ class(selenografia_alzate,images,
 	[
 		[id=>selenografia_alzate_bnm,[[identifier=>'607LAF',0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_bnm.jpeg',0]],[[collector=>lafragua,0]]],
 		[id=>selenografia_alzate_jcb,[[identifier=>'B770.A478e',0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_jcb.jpeg',0]],[[collector=>nicolas_leon,0]]],
-		[id=>selenografia_alzate_palafoxiana,[[illuminated,0]],[[collector=>lafragua,0]]]
+		[id=>selenografia_alzate_palafoxiana,[[illuminated,0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_palafoxiana.jpeg',0]],[[collector=>lafragua,0]]]
 	]
 	),
 	
 class(esfera_armilar_martinez,images,
 	[[technique=>woodcut,0],[key_words=>[instrument,'esfera armilar',globe,zodiac,ecliptic],0],[not(text),0],[instrument,0],[not(dated),0]],[],
 	[
-		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0],[url=>'http://turing.iimas.unam.mx/ains/esfera_armilar_martinez_jcb.pdf',0]],[]]
+		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0],[url=>'http://turing.iimas.unam.mx/ains/esfera_armilar_martinez_jcb.jpg',0]],[]]
 	]
 	),
 	
