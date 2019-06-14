@@ -1,4 +1,10 @@
 # Knowledge-Base Systems Lab, IIMAS UNAM 
+
+## Prerequisites
+A Prolog interpreter must be installed and working. For instance SWI Prolog (see [https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html](https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html)). Invoke the Prolog interpreter with the instruction `swipl` in a terminal.
+
+## Description of our KB System
+
 **non-monotonic-KBS-for-DH** is a repository containing code and applications of a non-monotonic knowledge-base (KB) system featuring:
 * strong negation, 
 * negative and positive defaults,
