@@ -1,5 +1,7 @@
 ### Astronomical Images of New Spain
 
-The structure for this taxonomy is depicted next:
+The structure for the initial taxonomy corresponding to `kb_ains_initial.txt` is depicted next:
 
-Some of the images described in `kb_ains_final.txt` can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
+![Initial taxonoty](img/initial_taxonomy_ains.jpg)
+
+Some of the images described in this case-study can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
