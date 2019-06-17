@@ -1,6 +1,6 @@
 ### University Taxonomy
 
-The initial taxonomy of a university is specified in `kb_university.txt`. Its structure is depicted next:
+The initial taxonomy of a university is specified in [`kb_university.txt`.](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/kb_university.txt) Its structure is depicted next:
 
 ![Academic taxonomy](img/academic-taxonomy-2.png)
 
@@ -87,7 +87,7 @@ Examples are provided for each of the eight basic KB-Services present in the sys
 (i.e., all explanations of  *anne*).
 
 ---
-Custom queries for retriving specific information of the university KB are defined in `cust_queries_univ.pl`. Inside the session where the KB system is currently active, two custom queries for the university taxonomy are carried out next.
+Custom queries for retriving specific information of the university KB are defined in [`cust_queries_univ.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/cust_queries_univ.pl). Inside the session where the KB system is currently active, two custom queries for the university taxonomy are carried out next.
 
 First, load the file with the custom queries: `?- consult('cust_queries_univ.pl').`
 
