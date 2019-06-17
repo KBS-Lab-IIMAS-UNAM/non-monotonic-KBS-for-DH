@@ -8,6 +8,7 @@ The session starts by calling the Prolog interpreter with the instruction `swipl
 
 ```?- consult('../kb_engine.pl').```
 
+---
 **Note**: In the example code shown here there is a line break between each KB-Service call, which should not be present in the actual execution.
 
 With the sequence of KB-Services presented below the `kb_ains_initial.txt` is updated by adding the image `selenografia_alzate_palafoxiana` with its id, its collector and the fact that it comes illuminated. Also the class `places`  is added with `salon_en_donceles` as its individual. And the id of `selenografia_alzate_jcb` is ammended. Notice how each modification is saved in a variable holding the current state of the KB. Finally, the updated KB is saved as `kb_ains_initial_2.txt`:
@@ -40,6 +41,8 @@ The answer with all images in the KB `kb_ains_initial_3.txt` is:
 
 `Extension = [esfera_armilar_martinez_jcb,selenografia_oculus_bnm, selenografia_alzate_jcb,selenografia_alzate_palafoxiana].`
 
+---
 After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at `kb_ains_final.txt`, whose digram appears below.
 
+---
 Some of the images described in this case-study can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
