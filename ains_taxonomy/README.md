@@ -33,7 +33,7 @@ Next, the class `selenografia_alzate` is added to `kb_ains_initial_2.txt` and a 
 
 Custom queries allow the retrival of specific information important for developers and final users of a particular KB application. In the current case-study, the custom queries for Astronomical Images of New Spain are defined in the file `cust_queries_ains.pl`. One of such queries lists all images in the taxonomy according to the commands shown next:
 
-`?- consult('cust_queries_ains.pl').`<br />
+`?- consult('cust_queries_ains.pl').`<br /><br />
 `?- open_kb('kb_ains_initial_3.txt',KB),`<br />
 `extension_all_images(KB,Extension).`
 
