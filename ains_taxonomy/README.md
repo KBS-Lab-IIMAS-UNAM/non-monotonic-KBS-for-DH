@@ -23,7 +23,7 @@ With the sequence of KB-Services presented below the `kb_ains_initial.txt` is up
 `change_value_object_property(selenografia_alzate_jcb,identifier,'B770.A478e',KB7,KB8),`<br />
 `save_kb('kb_ains_initial_2.txt',KB8).`
 
-Next, the class `selenografia_alzate` is added to `kb_ains_initial_2.txt` and a reassignment of the objects in the class `images` takes place ending up with the KB `kb_ains_initial_3.txt`. The following commands carry out these modifications:
+Next, the class `selenografia_alzate` is added to `kb_ains_initial_2.txt` and a reassignment of the objects in the class `images` takes place, ending up with the KB `kb_ains_initial_3.txt`. The following commands carry out these modifications:
 
 `?- open_kb('kb_ains_initial_2.txt',KB),`<br />
 `add_class(selenografia_alzate,images,KB,KB2),`<br />
