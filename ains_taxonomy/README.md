@@ -2,7 +2,7 @@
 
 The structure for the initial taxonomy corresponding to `kb_ains_initial.txt` is depicted next:
 
-![Initial taxonoty](img/initial_taxonomy_ains.jpg)
+![Initial taxonomy](img/initial_taxonomy_ains.jpg)
 
 The session starts by calling the Prolog interpreter with the instruction `swipl` in a terminal opened in this project folder `non-monotonic-KBS-for-DH/ains_taxonomy/`. The KB engine is loaded with the command:
 
@@ -43,6 +43,8 @@ The answer with all images in the KB `kb_ains_initial_3.txt` is:
 
 ---
 After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at `kb_ains_final.txt`, whose partial digram appears below.
+
+![Final taxonomy](img/final_taxonomy_ains.jpg)
 
 ---
 Some of the images described in this case-study can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
