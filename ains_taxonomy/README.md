@@ -1,4 +1,4 @@
-### Astronomical Images of New Spain
+### Astronomical Images of New Spain (AINS)
 
 The structure for the initial taxonomy corresponding to `kb_ains_initial.txt` is depicted next:
 
@@ -42,7 +42,7 @@ The answer with all images in the KB `kb_ains_initial_3.txt` is:
 `Extension = [esfera_armilar_martinez_jcb,selenografia_oculus_bnm, selenografia_alzate_jcb,selenografia_alzate_palafoxiana].`
 
 ---
-After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at `kb_ains_final.txt`, whose digram appears below.
+After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at `kb_ains_final.txt`, whose partial digram appears below.
 
 ---
 Some of the images described in this case-study can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
