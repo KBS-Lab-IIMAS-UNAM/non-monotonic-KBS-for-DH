@@ -110,7 +110,7 @@ First, load the file with the custom queries: `?- consult('cust_queries_univ.pl'
 (i.e., there is no *room* not assigned to courses).
 
 ---
-Through the KB-Service the content of the KB can be updated, added, removed and chaged. Below there are some examples of these services applied to the KB in `kb_university.txt`. 
+Through the KB-Service the content of the KB can be updated, added, removed and chaged. Below there are some examples of these services applied to the KB in [`kb_university.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/kb_university.txt). 
 
 Suppose that the class `teaching assistants` is added as a subclass of `people`. The new class has the property that its individuals `teach` and `grade` The items that they grade are: `quizzes`, `projects` and `problem sets`. Also, teaching assistants gather in the `teachers_room`. These modifications are expressed below, where the whole KB is the argument to the modifying predicates. The KB that results of this additions is saved as `kb_add_class.txt`:
 
@@ -121,7 +121,7 @@ Suppose that the class `teaching assistants` is added as a subclass of `people`.
 `add_class_relation('teaching assistants',found,teachers_room,KB3,KB4),`<br />
 `save_kb('kb_add_class.txt',KB4).`
 
-Now, the individual `john` is added to the class teaching assistants -- just created. A property and a relation are defined for him: john is a `sport` person and `works` for `mary`. Also the `teachers_room` is added as an individual to the class `rooms`. These additions are saved in `kb_add_obj.txt`. The procedure is as follows:
+Now, the individual `john` is added to the class teaching assistants -- just created. A property and a relation are defined for him: john is a `sport` person and `works` for `mary`. Also the `teachers_room` is added as an individual to the class `rooms`. These additions are saved as `kb_add_obj.txt`. The procedure is as follows:
 
 `?- open_kb('kb_add_class.txt',KB),`<br />
 `add_object(john,'teaching assistants',KB,KB1),`<br />
@@ -144,3 +144,11 @@ The value of the property `size` of the class `rooms` is updated, and the defaul
 `change_object_name(john,brian,KB1,KB2),`<br />
 `change_value_object_relation(mary,lectures,prog,KB2,KB3),`<br />
 `save_kb('kb_change.txt',KB3).`
+
+Finally, the weigh of a preference is updated:
+
+`open_kb('kb_change.txt',KB),`<br />
+`change_weight_class_property_preference(students,like=>'-'=>>study=>'-',7,KB,KB1),`<br />
+`save_kb('kb_preference_university.txt',KB1).`
+
+At the end, the file with the final state of the KB for the university taxonomy is [`kb_preference_university.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/kb_preference_university.txt).
