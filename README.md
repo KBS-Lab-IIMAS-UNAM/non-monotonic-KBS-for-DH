@@ -1,7 +1,7 @@
 # Knowledge-Base Systems Lab, IIMAS UNAM 
 
 ## Prerequisites
-A Prolog interpreter must be installed and working. For instance SWI Prolog (see this [link](https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html)). 
+A Prolog interpreter must be installed and working. For instance, SWI Prolog (see this [link](https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html)). 
 
 ## Description of our KB System
 
@@ -28,4 +28,4 @@ There is an extensive number of KB-Services, the eight basic ones are listed nex
 
 Besides the KB-Services in `kb_engine.pl`, the user can type its own custom services or queries that retrieve specific information from the KB of the problem he is facing. It is preferable to write the code for such custom queries in a different Prolog file and then load it as part of the KB system session.
 
-In this repository two application of our KB system are provided. First, a repesentation and manipulation of classes and individuals within a *university* is studied [here](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/tree/master/university_taxonomy). Finally, the classification and management of knowledge regarding several aspects of the *Astronomical Images of New Spain* is presented [here](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/tree/master/ains_taxonomy) as a practical and real use of our KB system in the Digital Humanities.
+In this repository two application of our KB system are provided. First, a repesentation and manipulation of classes and individuals within a *university* is studied [here](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/tree/master/university_taxonomy). Finally, the classification and management of knowledge regarding several aspects of the *Astronomical Images of New Spain* is presented [here](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/tree/master/ains_taxonomy) as a practical and real use of our KB system in the area of Digital Humanities.
