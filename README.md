@@ -13,9 +13,8 @@ A Prolog interpreter must be installed and working. For instance SWI Prolog (see
 * an inference system through preferences and abduction.
 
 
-The implementation for the previous capabilities is found in the Prolog file `kb_engine.pl` in the form of KB-Services. This file is loaded in the Prolog interpreter with the instruction:
+The implementation for the previous capabilities is found in the Prolog file `kb_engine.pl` in the form of KB-Services. This file works as the KB engine of all the KB system.
 
-```?- consult('kb_engine.pl').```
 
 There is an extensive number of KB-Services, the eight basic ones are listed next:
 1. `class_extension(Class, Extension)`: provides the set of individual in the argument class.
