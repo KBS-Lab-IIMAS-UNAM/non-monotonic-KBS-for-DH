@@ -139,7 +139,7 @@ Next, the class `library staff` is removed, as well as the individual `pete` wit
 
 The value of the property `size` of the class `rooms` is updated, and the default value of this property is now `huge`; the name `john` is changed to `brian`, and the object of the relation `lectures` of `mary` is updated to `prog`. This changes are saved as `kb_change.txt`:
 
-`open_kb('kb_rm.txt',KB),`<br />
+`?- open_kb('kb_rm.txt',KB),`<br />
 `change_value_class_property(rooms,size,huge,KB,KB1),`<br />
 `change_object_name(john,brian,KB1,KB2),`<br />
 `change_value_object_relation(mary,lectures,prog,KB2,KB3),`<br />
@@ -147,7 +147,7 @@ The value of the property `size` of the class `rooms` is updated, and the defaul
 
 Finally, the weigh of a preference is updated:
 
-`open_kb('kb_change.txt',KB),`<br />
+`?- open_kb('kb_change.txt',KB),`<br />
 `change_weight_class_property_preference(students,like=>'-'=>>study=>'-',7,KB,KB1),`<br />
 `save_kb('kb_preference_university.txt',KB1).`
 
