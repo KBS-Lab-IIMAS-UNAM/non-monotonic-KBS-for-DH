@@ -1,6 +1,6 @@
 # Knowledge-Base Systems Lab, IIMAS UNAM 
 
-## Prerequisites
+## Requirements
 A Prolog interpreter must be installed and working. For instance, SWI Prolog (see this [link](https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html)). 
 
 ## Description of the KB System
