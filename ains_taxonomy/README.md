@@ -42,7 +42,7 @@ The answer with all images in the KB `kb_ains_initial_3.txt` is:
 `Extension = [esfera_armilar_martinez_jcb,selenografia_oculus_bnm, selenografia_alzate_jcb,selenografia_alzate_palafoxiana].`
 
 ---
-After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at [`kb_ains_final.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl), whose partial digram appears below.
+After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at [`kb_ains_final.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl), whose partial diagram appears below.
 
 ![Final taxonomy](img/final_taxonomy_ains.jpg)
 
