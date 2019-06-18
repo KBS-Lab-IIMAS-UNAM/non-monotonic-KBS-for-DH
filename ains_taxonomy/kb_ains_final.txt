@@ -38,7 +38,7 @@ class(repositories, objects, [], [], []),
 
 class(people, objects, 
 	[[name=>not_given,0],[date_of_birth=>unknown,0],[deceased=>unknown,0],[occupation=>unknown,0],[born_in=>unknown,0],[worked_in=>unknown,0],[occupation=>publisher=>>not(occupation=>author),3]],
-	[[occupation=>reader=>>read=>books,2],[occupation=>author=>>read=>books,2],[produce=>books,0],[use=>instruments,0],[relation_with=>people,0]], 
+	[[occupation=>reader=>>read=>books,2],[occupation=>engraver=>>read=>books,3],[produce=>books,0],[use=>instruments,0],[relation_with=>people,0]], 
 	[
 		[ id=>navarro,[[name=>'Jose Mariano Navarro',0],[occupation=>engraver,0],[worked_in=>mexico,0]],[[entertained=>salon_in_donceles,0],[engraves=>books,0],[collaborates_with=>[alzate,jauregui],0]] ],
 		[ id=>alzate,[[name=>alzate,0],[occupation=>author,0],[worked_in=>mexico,0]],[] ],
@@ -80,7 +80,7 @@ class(oculus_enoch,books,
 		[id=>oculus_enoch_bnm,[[inscription=>'hice traer de flandes este libro y puesto en mex me tuvo de costo nueve p de Carlos de Siguenza y Gongora 1678',0]],[[held_in=>bnm,0],[inscribed_by=>siguenza,0],[includes=>selenografia_oculus_bnm,0]]]
 	]),
 	
-class(manuscrits, objects, [], [], []),
+class(manuscripts, objects, [], [], []),
 
 class(places, objects, [], [], [
 		[id=>salon_in_donceles,[[used_as=>salon,0],[location=>'calle donceles',0]],[]],
