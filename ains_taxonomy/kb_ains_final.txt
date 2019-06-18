@@ -4,13 +4,13 @@ class(top,none,[],[],[]),
 class(objects, top, [], [], []),
 
 class(images, objects, 
-	[[name=>not_given,0],[key_words=>[astronomy],0],[dimensions=>not_taken,0],[support=>paper,0],[text,0],[engraver=>'-'=>>technique=>engraving,3],[epoch=>1700-1800=>>technique=>engraving,4],[epoch=>1550-1700=>>technique=>woodcut,4],[place_of_production=>mexico,0],[not(illuminated),0],[type=>printed,0],[identifier=>unknown,0],[stamp,0],[not(inscribed),0],[dated,0]], 
+	[[name=>not_given,0],[key_words=>[astronomy],0],[dimensions=>not_taken,0],[support=>paper,0],[text,0],[engraver=>'-'=>>technique=>engraving,3],[epoch=>'1700-1800'=>>technique=>engraving,4],[epoch=>1550-1700=>>technique=>woodcut,4],[place_of_production=>mexico,0],[not(illuminated),0],[type=>printed,0],[identifier=>unknown,0],[stamp,0],[not(inscribed),0],[dated,0]], 
 	[[author=>unknown,0],[engraver=>unknown,0],[stamp_by=>unknown,0]],
 	[]
 	),	
 	
 class(selenografia_alzate,images,
-	[[name=>selenografia,0],[epoch=>1700-1800,0],[key_words=>[moon,eclipse,length,mexico,riccioli],0],[not(stamp),0],[language=>spanish,0]],
+	[[name=>selenografia,0],[epoch=>'1700-1800',0],[technique=>engraving,0],[key_words=>[moon,eclipse,length,mexico,riccioli],0],[not(stamp),0],[language=>spanish,0]],
 	[[engraver=>navarro,0],[author=>alzate,0]],
 	[
 		[id=>selenografia_alzate_bnm,[[identifier=>'607LAF',0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_bnm.jpeg',0]],[[collector=>lafragua,0]]],
@@ -20,14 +20,14 @@ class(selenografia_alzate,images,
 	),
 	
 class(esfera_armilar_martinez,images,
-	[[technique=>woodcut,0],[key_words=>[instrument,'esfera armilar',globe,zodiac,ecliptic],0],[not(text),0],[instrument,0],[not(dated),0]],[],
+	[[technique=>woodcut,0],[epoch=>'1550-1700',0],[key_words=>[instrument,'esfera armilar',globe,zodiac,ecliptic],0],[not(text),0],[instrument,0],[not(dated),0]],[],
 	[
 		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0],[url=>'http://turing.iimas.unam.mx/ains/esfera_armilar_martinez_jcb.jpg',0]],[]]
 	]
 	),
 	
 class(selenografia_oculus,images,
-	[[epoch=>1550-1700,0],[technique=>engraving,0],[key_words=>[moon,map],0],[not(stamp),0],[place_of_production=>amberes,0]],
+	[[epoch=>'1550-1700',0],[technique=>engraving,0],[key_words=>[moon,map],0],[not(stamp),0],[place_of_production=>amberes,0]],
 	[[author=>rheita,0]],
 	[
 			[id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
