@@ -31,20 +31,21 @@ Next, the class `selenografia_alzate` is added to `kb_ains_initial_2.txt` and a 
 `change_object_class(selenografia_alzate_jcb,selenografia_alzate,KB3,KB4),`<br />
 `save_kb('kb_ains_initial_3.txt',KB4).`
 
-Custom queries allow the retrival of specific information important for developers and final users of a particular KB application. In the current case-study, the custom queries for Astronomical Images of New Spain are defined in the file [`cust_queries_ains.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl). One of such queries lists all images in the taxonomy according to the commands shown next:
-
-`?- consult('cust_queries_ains.pl').`<br /><br />
-`?- open_kb('kb_ains_initial_3.txt',KB),`<br />
-`extension_all_images(KB,Extension).`
-
-The answer with all images in the KB `kb_ains_initial_3.txt` is: 
-
-`Extension = [esfera_armilar_martinez_jcb,selenografia_oculus_bnm, selenografia_alzate_jcb,selenografia_alzate_palafoxiana].`
-
 ---
 After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at [`kb_ains_final.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl), whose partial diagram appears below.
 
 ![Final taxonomy](img/final_taxonomy_ains.jpg)
+
+---
+Custom queries allow the retrival of specific information important for developers and final users of a particular KB application. In the current case-study, the custom queries for Astronomical Images of New Spain are defined in the file [`cust_queries_ains.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl). One of such queries lists all images in the final taxonomy sharing a *keyword*, as shown next:
+
+`?- consult('cust_queries_ains.pl').`<br /><br />
+`?- open_kb('kb_ains_final.txt',KB),`<br />
+`extension_keyword(moon,KB,Extension).`
+
+The answer with all images in the KB `kb_ains_final.txt` having the keyword `moon` is: 
+
+`Extension = [selenografia_alzate, selenografia_oculus].`
 
 ---
 Some of the images described in this case-study can be found at [http://turing.iimas.unam.mx/ains/](http://turing.iimas.unam.mx/ains/)
