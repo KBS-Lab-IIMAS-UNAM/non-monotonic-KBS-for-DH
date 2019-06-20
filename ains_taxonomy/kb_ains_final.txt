@@ -1,85 +1,102 @@
 [
 class(top,none,[],[],[]),
 
-class(objetos, top, [], [], []),
+class(objects, top, [], [], []),
 
-class(imagenes, objetos, 
-	[[nombre=>sin_nombre,0],[tamanio=>sin_medir,0],[soporte=>papel,0],[tecnica=>sin_definir,0],[texto,0],[texto=>>lengua=>latin,2],[lugar_de_produccion=>mexico=>>lengua=>espaniol,1],[lugar_de_produccion=>mexico,0],[not(color),0],[tipo=>impresa,0],[identificador=>desconocido,0],[sello,0],[not(inscripcion),0]], 
-	[[autor=>desconocido,0],[grabador=>desconocido,0],[sello_de=>desconocido,0]], 
+class(images, objects, 
+	[[name=>not_given,0],[key_words=>[astronomy],0],[dimensions=>not_taken,0],[support=>paper,0],[text,0],[engraver=>'-'=>>technique=>engraving,3],[epoch=>'1700-1800'=>>technique=>engraving,4],[epoch=>1550-1700=>>technique=>woodcut,4],[place_of_production=>mexico,0],[not(illuminated),0],[type=>printed,0],[identifier=>unknown,0],[stamp,0],[not(inscribed),0],[dated,0]], 
+	[[author=>unknown,0],[engraver=>unknown,0],[stamp_by=>unknown,0]],
 	[]
 	),	
 	
-class(selenografia_alzate,imagenes,
-	[[nombre=>selenografia,0],[tecnica=>calcografia,0],[palabras_clave=>[luna,eclipse,longitud,mexico,riccioli],0],[not(sello),0]],
-	[[grabador=>navarro,0],[autor=>alzate,0]],
+class(selenografia_alzate,images,
+	[[name=>selenografia,0],[epoch=>'1700-1800',0],[technique=>engraving,0],[key_words=>[moon,eclipse,length,mexico,riccioli],0],[not(stamp),0],[language=>spanish,0]],
+	[[engraver=>navarro,0],[author=>alzate,0]],
 	[
-		[id=>selenografia_alzate_BNM,[[identificador=>'607LAF',0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]],
-		[id=>selenografia_alzate_JCB,[[identificador=>'B770.A478e',0],[url=>'www.google.com',0]],[[coleccionista=>nicolas_leon,0]]],
-		[id=>selenografia_alzate_PALAFOXIANA,[[color,0],[url=>'www.google.com',0]],[[coleccionista=>lafragua,0]]]
+		[id=>selenografia_alzate_bnm,[[identifier=>'607LAF',0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_bnm.jpeg',0]],[[collector=>lafragua,0]]],
+		[id=>selenografia_alzate_jcb,[[identifier=>'B770.A478e',0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_jcb.jpeg',0]],[[collector=>nicolas_leon,0]]],
+		[id=>selenografia_alzate_palafoxiana,[[illuminated,0],[url=>'http://turing.iimas.unam.mx/ains/selenografia_alzate_palafoxiana.jpeg',0]],[[collector=>lafragua,0]]]
 	]
 	),
 	
-class(esfera_armilar_martinez,imagenes,
-	[[nombre=>'sin nombre',0],[tecnica=>xilografia,0],[palabras_clave=>[instrumento,'esfera armilar',globo,zodiaco,ecliptica],0],[not(texto),0],[instrumento,0]],[],
+class(esfera_armilar_martinez,images,
+	[[technique=>woodcut,0],[epoch=>'1550-1700',0],[key_words=>[instrument,'esfera armilar',globe,zodiac,ecliptic],0],[not(text),0],[instrument,0],[not(dated),0]],[],
 	[
-		[id=>esfera_armilar_martinez_JCB,[[identificador=>'B06.M385R',0],[url=>'www.google.com',0]],[[contenida_en=>reportorio_martinez_jcb,0]]]
+		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0],[url=>'http://turing.iimas.unam.mx/ains/esfera_armilar_martinez_jcb.jpg',0]],[]]
 	]
 	),
 	
-class(selenografia_oculus,imagenes,
-	[[tecnica=>calcografia,0],[palabras_clave=>[luna,mapa],0],[not(sello),0]],
-	[[autor=>rheita,0]],
+class(selenografia_oculus,images,
+	[[epoch=>'1550-1700',0],[technique=>engraving,0],[key_words=>[moon,map],0],[not(stamp),0],[place_of_production=>amberes,0]],
+	[[author=>rheita,0]],
 	[
-			[id=>selenografia_oculus_BNM,[[url=>'www.google.com',0]],[[coleccionista=>siguenza,0],[inscripcion_de=>siguenza,0]]]
+			[id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
 	]
 	),
 	
-	
-	
-class(repositorios, objetos, [], [], []),
+class(repositories, objects, [], [], []),
 
-class(personas, objetos, 
-	[[nombre=>anonimo,0],[fecha_nacimiento=>desconocida,0],[fecha_deceso=>desconocida,0],[ocupacion=>ninguna,0],[lugar_de_nacimiento=>desconocido,0],[lugar_de_trabajo=>desconocido,0],[ocupacion=>librero=>>not(ocupacion=>autor),3]],
-	[[ocupacion=>lector=>>leen=>libros,2],[ocupacion=>autor=>>leen=>libros,2],[producen=>libros,0],[usan=>instrumentos,0],[se_relacionan=>personas,0]], 
+class(people, objects, 
+	[[name=>not_given,0],[date_of_birth=>unknown,0],[deceased=>unknown,0],[occupation=>unknown,0],[born_in=>unknown,0],[worked_in=>unknown,0],[occupation=>publisher=>>not(occupation=>author),3]],
+	[[occupation=>reader=>>read=>books,2],[occupation=>engraver=>>read=>books,3],[produce=>books,0],[use=>instruments,0],[relation_with=>people,0]], 
 	[
-		[ id=>navarro,[[nombre=>'Jose Mariano Navarro',0],[ocupacion=>grabador,0],[lugar_de_trabajo=>mexico,0]],[[duenio=>salon_en_donceles,0],[ilustra=>libros,0],[colabora_con=>[alzate,jauregui],0]] ],
-		[ id=>alzate,[[nombre=>alzate,0],[ocupacion=>autor,0],[lugar_de_trabajo=>mexico,0]],[] ],
-		[ id=>jauregui,[[nombre=>'Jose de Jauregui',0],[ocupacion=>librero,0],[lugar_de_trabajo=>mexico,0],[duenio=>imprenta_calle_san_bernando,0]],[] ],	
-		[ id=>nicolas_leon,[[nombre=>'Nicolas Leon',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
-		[ id=>lafragua,[[nombre=>'Jose Maria Lafragua',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
-		[ id=>mariano_guerrero,[[nombre=>'Jose Mariano Guerrero',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[] ],
-		[ id=>doctor_eguiara,[[nombre=>'Juan Jose De Eguiara Y Eguren',0],[ocupacion=>coleccionista,0],[lugar_de_trabajo=>mexico,0]],[]],
-		[ id=>siguenza,[[nombre=>'Carlos De Siguenza y Gongora',0],[ocupacion=>[lector,autor],0],[lugar_de_trabajo=>mexico,0],[lugar_de_nacimiento=>mexico,0]],[] ],
-		[ id=>rheita,[[nombre=>'Anton Maria Schyrlaeus Rheita',0],[ocupacion=>['monje capuchino',astronomo],0],[lugar_de_trabajo=>[bohemia,italia],0],[lugar_de_nacimiento=>bohemia,0],[fecha_nacimiento=>1597,0],[fecha_deceso=>1660,0]],[] ]
+		[ id=>navarro,[[name=>'Jose Mariano Navarro',0],[occupation=>engraver,0],[worked_in=>mexico,0]],[[entertained=>salon_in_donceles,0],[engraves=>books,0],[collaborates_with=>[alzate,jauregui],0]] ],
+		[ id=>alzate,[[name=>alzate,0],[occupation=>author,0],[worked_in=>mexico,0]],[] ],
+		[ id=>jauregui,[[name=>'Jose de Jauregui',0],[occupation=>publisher,0],[worked_in=>mexico,0],[owned=>printing_house_calle_san_bernando,0]],[] ],	
+		[ id=>nicolas_leon,[[name=>'Nicolas Leon',0],[occupation=>collector,0],[worked_in=>mexico,0]],[] ],
+		[ id=>lafragua,[[name=>'Jose Maria Lafragua',0],[occupation=>collector,0],[worked_in=>mexico,0]],[] ],
+		[ id=>mariano_guerrero,[[name=>'Jose Mariano Guerrero',0],[occupation=>collector,0],[worked_in=>mexico,0]],[] ],
+		[ id=>doctor_eguiara,[[name=>'Juan Jose De Eguiara Y Eguren',0],[occupation=>collector,0],[worked_in=>mexico,0]],[]],
+		[ id=>siguenza,[[name=>'Carlos de Siguenza y Gongora',0],[occupation=>[reader,author],0],[worked_in=>mexico,0],[born_in=>mexico,0]],[] ],
+		[ id=>rheita,[[name=>'Anton Maria Schyrlaeus Rheita',0],[occupation=>['cappucine monk',astronomer],0],[worked_in=>[bohemia,italy],0],[born_in=>bohemia,0],[date_of_birth=>1597,0],[deceased=>1660,0]],[] ],
+                [ id=>enrico_martinez,[[name=>'Enrico Martinez',0]],[] ],
+                [ id=>hieronimus_verdussi,[[name=>'Hieronimus Verdussi',0]], []]
         ]),
 	
-class(libros, objetos, [[identificador=>desconocido,0],[inscripcion=>'sin inscripcion',0],[librero=>desconocido,0],[anio_publicacion=>desconocido,0]], [], []),
+class(books, objects, [[identifier=>unknown,0],[inscription=>not_inscribed,0],[publication_date=>unknown,0], [publication_place=>mexico,0]], [[author=>unknown,0],[publisher=>unknown,0]], []),
 	
-class(reportorio_martinez,libros,
-	[[titulo=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0]],
-	[],
+class(reportorio_martinez,books,
+	[[title=>'Reportorio de los tiempos y Historia Natural desta Nueva España',0],[publication_date=>1606,0]],
+	[[author=>enrico_martinez,0],[publisher=>enrico_martinez,0]],
 	[
-		[id=>reportorio_martinez_jcb,[],[[sello_de=>mariano_guerrero,0],[inscripcion_de=>doctor_eguiara,0],[contiene_a=>esfera_armilar_martinez_jcb,0],[se_encuentra_en=>jcb,0]]]
+		[id=>reportorio_martinez_jcb,[],[[stamp_by=>mariano_guerrero,0],[inscribed_by=>doctor_eguiara,0],[includes=>esfera_armilar_martinez_jcb,0],[held_in=>jcb,0]]]
+	]
+	),
+
+class(eclypse_de_luna,books,
+	[[title=>'Eclypse de luna',0],[publication_date=>1770,0]],
+	[[author=>alzate,0],[publisher=>jauregui,0]],
+	[
+		[id=>eclypse_de_luna_jcb,[],[[stamp_by=>nicolas_leon,0],[includes=>selenografia_alzate_jcb,0],[held_in=>jcb,0]]],
+         	[id=>eclypse_de_luna_palafoxiana,[],[[includes=>selenografia_alzate_palafoxiana,0],[held_in=>palafoxiana,0]]],
+      	        [id=>eclypse_de_luna_bnm,[],[[includes=>selenografia_alzate_bnm,0],[held_in=>bnm,0]]]
 	]
 	),
 	
-class(manuscritos, objetos, [], [], []),
-
-class(lugares, objetos, [], [], [
-		[id=>salon_en_donceles,[[uso=>salon,0],[ubicacion=>'calle donceles',0]],[]],
-		[id=>imprenta_calle_san_bernando,[[uso=>imprenta,0],[ubicacion=>'calle san bernando',0]],[]]	
+class(oculus_enoch,books,
+	[[title=>'Oculus Enoch et eliae sive radius sidereomysticus pars prima',0],[publication_place=>[antverpiae,amberes],0],[publication_date=>1645,0]],
+	[[author=>rheita,0],[publisher=>hieronimus_verdussi,0]],
+	[
+		[id=>oculus_enoch_bnm,[[inscription=>'hice traer de flandes este libro y puesto en mex me tuvo de costo nueve p de Carlos de Siguenza y Gongora 1678',0]],[[held_in=>bnm,0],[inscribed_by=>siguenza,0],[includes=>selenografia_oculus_bnm,0]]]
 	]),
 	
-class(instituciones, objetos, [], [], []),
+class(manuscripts, objects, [], [], []),
 
-class(archivos, repositorios, [], [], []),
+class(places, objects, [], [], [
+		[id=>salon_in_donceles,[[used_as=>salon,0],[location=>'calle donceles',0]],[]],
+		[id=>printing_house_calle_san_bernando,[[used_as=>press,0],[location=>'calle san bernando',0]],[]]	
+	]),
+	
+class(institutions, objects, [], [], []),
 
-class(bibliotecas, repositorios, [], [], [
-		[id=>jcb,[],[]],
-		[id=>bnm,[],[]],
-		[id=>condumex,[],[]],
-		[id=>palafoxiana,[],[]],
-		[id=>cervantina,[],[]],
-		[id=>bl,[],[]]	
+class(archives, repositories, [], [], []),
+
+class(libraries, repositories, [], [], [
+		[id=>jcb,[[name=>'John Carter Brown Library',0]],[]],
+		[id=>bnm,[[name=>'Biblioteca Nacional de Mexico',0]],[]],
+		[id=>condumex,[[name=>'Centro de Estudios de Historia de Mexico Carso',0]],[]],
+		[id=>palafoxiana,[[name=>'Biblioteca Palafoxiana',0]],[]],
+		[id=>cervantina,[[name=>'Biblioteca Cervantina ITESM',0]],[]],
+		[id=>bl,[[name=>'British Library',0]],[]]	
 	])
 ]
