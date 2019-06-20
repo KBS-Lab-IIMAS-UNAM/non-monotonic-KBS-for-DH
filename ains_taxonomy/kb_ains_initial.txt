@@ -5,7 +5,7 @@ class(objetcs, top, [], [], []),
 
 class(images, objects, [], [], 
 	[
-		[id=>selenografia_alzate_bnm,[[identifier=>'607LAE',0]],[[collector=>lafragua,0]]],
+		[id=>selenografia_alzate_jcb,[[identifier=>'B770.A478f',0]],[[collector=>nicolas_leon,0]]],
 		[id=>esfera_armilar_martinez_jcb,[[identifier=>'B06.M385R',0]],[]],
 		[id=>selenografia_oculus_bnm,[],[[collector=>siguenza,0],[inscribed_by=>siguenza,0]]]
         ]),	
