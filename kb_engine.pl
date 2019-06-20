@@ -689,10 +689,13 @@ delete_repeated_abductions([El:Pref|T],[El:Pref|NewT]):-
 	delete_repeated_abductions(L2,NewT),!.
 
 deleteAbuction(_,[],[]):-!.
+deleteAbuction((Abd=>Val),[(Abd=>_):_|T],NewL):-
+	deleteAbuction((Abd=>Val),T,NewL).
 deleteAbuction(Abd,[Abd:_|T],NewL):-
 	deleteAbuction(Abd,T,NewL).
 deleteAbuction(Abd,[H:HV|T],[H:HV|NewL]):-
 	deleteAbuction(Abd,T,NewL).
+
 
 
 
@@ -877,34 +880,48 @@ abductive(Prop,Adb):-
 	%print(Prop),
 	prefer_extract(Prop,PropE,Pref),
 	delete_repeated_properties(PropE,PropEE),
-	preordenar(Pref,[],PrefO),print(PrefO),
-	abductive_handler(PrefO,PropEE,Adb).
+	preordenar(Pref,[],PrefO),%print(PrefO),print(PropEE),
+	prefer_handler(PrefO,PropEE,NewProp),
+	abductive_handler(PrefO,NewProp,Adb).
 
 abductive_handler([],_,[]).
 %Case 0 conclusion of type prop=>x
 abductive_handler([[(Pref=>'-')=>>(El=>'-'),_]|T],Prop,NewAbd):-
 	parte_de((El=>Val),Prop),
-	abductive_handler(T,Prop,Adb),
+	unir_lista(Prop,[Pref=>Val],NProp),
+	abductive_handler(T,NProp,Adb),
 	unir_lista([(El=>Val):(Pref=>Val)],Adb,NewAbd).
-%Case0.2
+%Case0.2.0
 abductive_handler([[(Pref=>'-')=>>(El=>ValE),_]|T],Prop,NewAbd):-
 	parte_de((El=>ValE),Prop),
-	abductive_handler(T,Prop,Adb),
-	unir_lista([(El=>ValE):(Pref=>ValE)],Adb,NewAbd).
+	parte_de((Pref=>ValP),Prop),
+	unir_lista(Prop,[Pref=>'-'],NProp),
+	abductive_handler(T,NProp,Adb),
+	unir_lista([(El=>ValE):(Pref=>ValP)],Adb,NewAbd).
+%Case0.2.1
+abductive_handler([[(Pref=>'-')=>>(El=>ValE),_]|T],Prop,NewAbd):-
+	parte_de((El=>ValE),Prop),
+	unir_lista(Prop,[Pref=>'-'],NProp),
+	abductive_handler(T,NProp,Adb),
+	unir_lista([(El=>ValE):(Pref=>'-')],Adb,NewAbd).
 %Case 1 conclusion of type prop=>x
 abductive_handler([[Pref=>>(El=>'-'),_]|T],Prop,NewAbd):-
 	parte_de((El=>Val),Prop),
-	abductive_handler(T,Prop,Adb),
+	unir_lista(Prop,[Pref],NProp),
+	abductive_handler(T,NProp,Adb),
 	unir_lista([(El=>Val):Pref],Adb,NewAbd).
 %Case 2 conclusion of type prop=>val
 abductive_handler([[Pref=>>(El=>ValE),_]|T],Prop,NewAdb):-
 	parte_de((El=>ValE),Prop),
-	abductive_handler(T,Prop,Adb),
+	unir_lista(Prop,[Pref],NProp),
+	abductive_handler(T,NProp,Adb),
 	unir_lista([(El=>ValE):Pref],Adb,NewAdb).
 %case 3 conclusion of type prop
 abductive_handler([[Pref=>>El,_]|T],Prop,NewAdb):-
 	parte_de(El,Prop),
-	abductive_handler(T,Prop,Adb),
+
+	unir_lista(Prop,[Pref],NProp),
+	abductive_handler(T,NProp,Adb),
 	unir_lista([El:Pref],Adb,NewAdb).
 %caso default, si no la encuentra.
 abductive_handler([_|T],Prop,Adb):-
@@ -1100,6 +1117,17 @@ concat_ancestors_relations([Ancestor|T],KB,TFinal):-
 	append(NewRelations,NewT,TFinal).
 
 
+concat_ancestors_all([],_,[]).
+
+concat_ancestors_all([Ancestor|T],KB,TFinal):-
+	concat_ancestors_all(T,KB,NewT),
+	relations_only_in_the_class(Ancestor,KB,Relations),
+	properties_only_in_the_class(Ancestor,KB,Properties),
+	append(Properties,Relations,All),
+	append(All,['?'],NewAll),
+	append(NewAll,NewT,TFinal).
+
+
 
 %Return the value of a class relation
 
@@ -1159,20 +1187,6 @@ relations_only_in_the_object(Object,[class(_,_,_,_,O)|_],Relations):-
 relations_only_in_the_object(Object,[_|T],Relations):-
 	relations_only_in_the_object(Object,T,Relations).
 
-
-%%List of all abduvtive reasoning answers
-
-object_abductive(Object,KB,AllAdbuctive):-
-	there_is_object(Object,KB,yes),
-	properties_only_in_the_object(Object,KB,ObjectProperties),
-	class_of_an_object(Object,KB,Class),
-	list_of_ancestors(Class,KB,Ancestors),
-	concat_ancestors_properties([Class|Ancestors],KB,ClassProperties),
-	append(ObjectProperties,['?'],ObjectProperties2),
-	append(ObjectProperties2,ClassProperties,Temp),
-	abductive(Temp,AllAdbuctive).
-	%delete_repeated_abductions(TempR,AllAdbuctive).
-
 %Return the value of an object relation
 
 object_relation_value(Object,Relation,KB,Value):-
@@ -1181,6 +1195,22 @@ object_relation_value(Object,Relation,KB,Value):-
 	find_value_relation(Relation,Relations,Value).
 
 object_relation_value(_,_,_,unknown).
+
+
+%%List of all abduvtive reasoning answers
+
+object_abductive(Object,KB,AllAdbuctive):-
+	there_is_object(Object,KB,yes),
+	properties_only_in_the_object(Object,KB,ObjectProperties),
+	relations_only_in_the_object(Object,KB,ObjectRelations),
+	unir_lista(ObjectProperties,ObjectRelations,ObjectAll),
+	class_of_an_object(Object,KB,Class),
+	list_of_ancestors(Class,KB,Ancestors),
+	concat_ancestors_all([Class|Ancestors],KB,ClassAll),
+	append(ObjectAll,['?'],ObjectAll2),
+	append(ObjectAll2,ClassAll,Temp),
+	abductive(Temp,TempR),
+	delete_repeated_abductions(TempR,AllAdbuctive),!.
 
 
 
@@ -1335,6 +1365,26 @@ expanding_classes_into_objects_s(X:[Y|TY],X:[Y|Objects],KB):-
 	expanding_classes_into_objects_s(X:TY,X:Objects,KB).
 
 
+% Explanation extension
+
+explanation_extension(Property,KB,Result):-
+	objects_of_a_class(top,KB,AllObjects),
+	filter_objects_with_property_relation(KB,Property,AllObjects,Result).
+	%eliminate_null_property(Objects,Result).
+
+filter_objects_with_property_relation(_,_,[],[]).
+
+filter_objects_with_property_relation(KB,Property,[H|T],[H:Exp|NewT]):-
+	object_abductive(H,KB,Abd),
+	parte_de((Property:Exp),Abd),
+	filter_objects_with_property_relation(KB,Property,T,NewT).
+
+filter_objects_with_property_relation(KB,Property,[_|T],NewT):-
+	filter_objects_with_property_relation(KB,Property,T,NewT).
+
+
+
+
 %Classes of individual
 
 classes_of_individual(Object,KB,Classes):-
@@ -1378,4 +1428,9 @@ expand_classes_to_objects([not(X=>Y)|T],[not(X=>[Y])|NewT],KB):-
 
 expand_classes_to_objects([X=>Y|T],[X=>[Y]|NewT],KB):-
 	expand_classes_to_objects(T,NewT,KB).
+
+
+%Explanation of individual
 	
+explanation_of_individual(Object,KB,Explanation):-
+	object_abductive(Object,KB,Explanation).
