@@ -37,7 +37,7 @@ After all the research work is completed, the resulting KB for the case-study on
 ![Final taxonomy](img/final_taxonomy_ains.jpg)
 
 ---
-Custom queries allow the retrival of specific information important for developers and final users of a particular KB application. In the current case-study, the custom queries for Astronomical Images of New Spain are defined in the file [`cust_queries_ains.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl). One of such queries lists all images in the taxonomy sharing a *keyword*, as shown next:
+Custom queries allow the retrival of specific information important for developers and final users of a particular KB application. In the current case-study, the custom queries for Astronomical Images of New Spain are defined in the file [`cust_queries_ains.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl). For instance, `extension_keyword` is a custom query that lists all images in the taxonomy sharing a *keyword*. The example code below is run in the ongoing session where the KB system is currently active:
 
 `?- consult('cust_queries_ains.pl').`<br /><br />
 `?- open_kb('kb_ains_final.txt',KB),`<br />
