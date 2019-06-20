@@ -112,7 +112,7 @@ First, load the file with the custom queries: `?- consult('cust_queries_univ.pl'
 ---
 Through the KB-Services the content of the KB can be updated, added, removed and chaged. Below there are some examples of these services applied to the KB in [`kb_university.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/kb_university.txt). 
 
-Suppose that the class `teaching assistants` is added as a subclass of `people`. The new class has the property that its individuals `teach` and `grade` The items that they grade are: `quizzes`, `projects` and `problem sets`. Also, teaching assistants gather in the `teachers_room`. These modifications are expressed below, where each predicate reads the source KB and outputs a second KB holding the changes that took place. The KB that results of all these additions is saved as `kb_add_class.txt`:
+Suppose that the class `teaching assistants` is added as a subclass of `people`. The new class has the property that its individuals `teach` and `grade` The items that they grade are: `quizzes`, `projects` and `problem sets`. Also, teaching assistants gather in the `teachers_room`. These additions are expressed below, where each predicate reads the source KB and outputs a second KB holding the changes that took place. The KB that results of all these additions is saved as `kb_add_class.txt`:
 
 `?- open_kb('kb_university.txt',KB),`<br />
 `add_class('teaching assistants',people,KB,KB1),`<br />
