@@ -11,7 +11,7 @@ The session starts by calling the Prolog interpreter with the instruction `swipl
 ---
 **Note**: In the example code shown here there is a line break between each KB-Service call, which should not be present in the actual execution.
 
-With the sequence of KB-Services presented below the `kb_ains_initial.txt` is updated by adding the image `selenografia_alzate_palafoxiana` with its id, its collector and the fact that it comes illuminated. Also the class `places`  is added with `salon_en_donceles` as its individual. And the id of `selenografia_alzate_jcb` is ammended. Each predicate that is used reads the source KB and outputs a second KB holding the changes that took place. Finally, the updated KB is saved as [`kb_ains_initial_2.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/kb_ains_initial_2.txt):
+With the sequence of KB-Services presented below the `kb_ains_initial.txt` is updated by adding the image `selenografia_alzate_palafoxiana` with its id, its collector and the fact that it comes illuminated. Also the class `places`  is added with `salon_en_donceles` as its individual. And the id of `selenografia_alzate_jcb` is ammended. Each KB-Service that is used reads the source KB and outputs a second KB holding the changes that took place. Finally, the updated KB is saved as [`kb_ains_initial_2.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/kb_ains_initial_2.txt):
 
 `?- open_kb('kb_ains_initial.txt',KB),`<br />
 `add_object(selenografia_alzate_palafoxiana,images,KB,KB1),`<br />
