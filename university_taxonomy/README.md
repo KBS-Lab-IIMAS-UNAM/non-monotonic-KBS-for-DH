@@ -87,7 +87,7 @@ Examples are provided for each of the eight basic KB-Services present in the sys
 (i.e., all explanations of  *anne*).
 
 ---
-Custom queries for retriving specific information of the university KB are defined in [`cust_queries_univ.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/cust_queries_univ.pl). Inside the session where the KB system is currently active, two custom queries for the university taxonomy are carried out next.
+Custom queries for retriving specific information of the university KB are defined in [`cust_queries_univ.pl`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/cust_queries_univ.pl). In the ongoing session where the KB system is currently active, two custom queries for the university taxonomy are carried out next.
 
 First, load the file with the custom queries: `?- consult('cust_queries_univ.pl').`
 
@@ -112,7 +112,7 @@ First, load the file with the custom queries: `?- consult('cust_queries_univ.pl'
 ---
 Through the KB-Services the content of the KB can be updated, added, removed and chaged. Below there are some examples of these services applied to the KB in [`kb_university.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/university_taxonomy/kb_university.txt). 
 
-Suppose that the class `teaching assistants` is added as a subclass of `people`. The new class has the property that its individuals `teach` and `grade` The items that they grade are: `quizzes`, `projects` and `problem sets`. Also, teaching assistants gather in the `teachers_room`. These modifications are expressed below, where the whole KB is the argument to the modifying predicates. The KB that results of this additions is saved as `kb_add_class.txt`:
+Suppose that the class `teaching assistants` is added as a subclass of `people`. The new class has the property that its individuals `teach` and `grade` The items that they grade are: `quizzes`, `projects` and `problem sets`. Also, teaching assistants gather in the `teachers_room`. These modifications are expressed below, where each predicate reads the source KB and outputs a second KB holding the changes that took place. The KB that results of all these additions is saved as `kb_add_class.txt`:
 
 `?- open_kb('kb_university.txt',KB),`<br />
 `add_class('teaching assistants',people,KB,KB1),`<br />
@@ -145,7 +145,7 @@ The value of the property `size` of the class `rooms` is updated, and the defaul
 `change_value_object_relation(mary,lectures,prog,KB2,KB3),`<br />
 `save_kb('kb_change.txt',KB3).`
 
-Finally, the weigh of a preference is updated:
+Finally, the weight of a preference is updated:
 
 `?- open_kb('kb_change.txt',KB),`<br />
 `change_weight_class_property_preference(students,like=>'-'=>>study=>'-',7,KB,KB1),`<br />
