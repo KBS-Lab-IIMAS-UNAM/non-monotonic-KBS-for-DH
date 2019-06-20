@@ -6,22 +6,22 @@
 %% Gets all images with a keyword
 %% e.g., open_kb('kb_ains_final.txt',KB), extension_keyword(moon,KB,ImgKW).
 extension_keyword(KW,KB,ImgKW):-
-	  sons_of_class(images,KB,List_Imgs),
-	  check_keyword_img(List_Imgs,KW,KB,ImgKW).
+    sons_of_class(images,KB,List_Imgs),
+    check_keyword_img(List_Imgs,KW,KB,ImgKW).
 
 
 check_keyword_img([],_,_,[]).
 check_keyword_img([Img|More],KW,KB,[Img|Res]):-
-	  class_property_value(Img,key_words,KB,Val),
+    class_property_value(Img,key_words,KB,Val),
           (is_list(Val)
            -> isElement(KW,Val),!
            ;  KW = Val,!
-	  ),
+    ),
           check_keyword_img(More,KW,KB,Res).
 check_keyword_img([_|More],KW,KB,Res):-
-	  check_keyword_img(More,KW,KB,Res).
+    check_keyword_img(More,KW,KB,Res).
 
-	
+  
 
 %%%%%%%%%%%%%%%%%
 %% Get all images in the KB. Note this is just an alias of
@@ -83,3 +83,12 @@ check_repo([Repo:Lst|_],Image,Repo):-
 
 check_repo([_|More],Image,Repo):-
         check_repo(More,Image,Repo).
+
+
+
+%%%%%%%%%%%%%%%%%
+%% Provides the cause of a given image to have the technique property
+cause_of_technique(Image,KB, Cause):-
+         object_abductive(Image,KB,Ab),
+         parte_de((technique=>_):Cause,Ab),!.
+
