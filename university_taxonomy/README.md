@@ -4,7 +4,7 @@ The initial taxonomy of a university is specified in [`kb_university.txt`.](http
 
 ![Academic taxonomy](img/academic-taxonomy-2.png)
 
-The session starts by calling the Prolog interpreter with the instruction `swipl` in a terminal opened in this project folder `non-monotonic-KBS-for-DH/university_taxonomy/`. The KB engine is loaded with the command:
+The session starts by calling the Prolog interpreter with the instruction `swipl` in a terminal opened at the location `non-monotonic-KBS-for-DH/university_taxonomy/` of this project as the current working directory. Next, the KB engine is loaded with the command:
 
 ```?- consult('../kb_engine.pl').```
 
