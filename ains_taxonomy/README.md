@@ -4,7 +4,7 @@ The structure for the initial taxonomy corresponding to [`kb_ains_initial.txt`](
 
 ![Initial taxonomy](img/initial_taxonomy_ains.jpg)
 
-The session starts by calling the Prolog interpreter with the instruction `swipl` in a terminal opened in this project folder `non-monotonic-KBS-for-DH/ains_taxonomy/`. The KB engine is loaded with the command:
+The session starts by calling the Prolog interpreter with the instruction `swipl` in a terminal opened at the location `non-monotonic-KBS-for-DH/ains_taxonomy/` of this project as the current working directory. Next, the KB engine is loaded with the command:
 
 ```?- consult('../kb_engine.pl').```
 
