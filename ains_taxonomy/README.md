@@ -32,7 +32,7 @@ Next, the class `selenografia_alzate` is added to `kb_ains_initial_2.txt` and a 
 `save_kb('kb_ains_initial_3.txt',KB4).`
 
 ---
-After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at [`kb_ains_final.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/cust_queries_ains.pl), whose partial diagram appears below.
+After all the research work is completed, the resulting KB for the case-study on Astronomical Images of New Spain can be seen at [`kb_ains_final.txt`](https://github.com/KBS-Lab-IIMAS-UNAM/non-monotonic-KBS-for-DH/blob/master/ains_taxonomy/kb_ains_final.txt), whose partial diagram appears below.
 
 ![Final taxonomy](img/final_taxonomy_ains.jpg)
 
